@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react"
-const API_URL = "http://localhost:5001/api"
 import { Alert } from "react-native"
+import { API_URL } from "@/constants/api"
 
 export const useTransactions = (userId) => {
   const [transactions, setTransactions] = useState([])

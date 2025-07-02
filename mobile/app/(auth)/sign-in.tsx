@@ -45,6 +45,8 @@ export default function Page() {
         setError('Invalid email address')
       }else if (err.errors?.[0].code === 'form_password_incorrect') {
         setError('Invalid password')
+      }else if (err.errors?.[0].code === 'form_identifier_not_found') {
+        setError('Email not found')
       }else {
         setError('An error has occurred. Please try again.')
       }

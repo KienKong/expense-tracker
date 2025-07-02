@@ -15,7 +15,7 @@ export async function getTransactionsByuserId(req, res) {
 
 export async function createTransaction (req, res){
   try {
-    const { user_id, title, amount, category } = req.body;
+    const { user_id, title, amount, category, created_at } = req.body;
 
     // Validate required fields
     if (!user_id || !title || !amount || !category) {
@@ -33,15 +33,18 @@ export async function createTransaction (req, res){
       });
     }
 
-    console.log('Attempting to insert transaction with values:', { user_id, title, amount, category });
+    // Use provided date or default to current date
+    const transactionDate = created_at || new Date().toISOString().split('T')[0];
+    
+    console.log('Attempting to insert transaction with values:', { user_id, title, amount, category, date: transactionDate });
 
     const result = await db.query(`
       INSERT INTO transactions 
-        (user_id, title, amount, category) 
+        (user_id, title, amount, category, created_at) 
       VALUES 
-        ($1, $2, $3, $4) 
+        ($1, $2, $3, $4, $5) 
       RETURNING *
-    `, [user_id, title, amount, category]);
+    `, [user_id, title, amount, category, transactionDate]);
 
     console.log('Query result:', result);
 

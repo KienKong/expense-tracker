@@ -1,0 +1,14 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="20" cy="20" r="18" fill="#007AFF" stroke="#0056CC" stroke-width="2"/>
+  
+  <!-- Dollar sign -->
+  <path d="M20 8v24M16 12c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.21-1.79 4-4 4s-4 1.79-4 4c0 2.21 1.79 4 4 4s4-1.79 4-4" 
+        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Chart bars -->
+  <rect x="12" y="26" width="3" height="8" fill="white" opacity="0.8"/>
+  <rect x="17" y="22" width="3" height="12" fill="white" opacity="0.9"/>
+  <rect x="22" y="18" width="3" height="16" fill="white"/>
+  <rect x="27" y="24" width="3" height="10" fill="white" opacity="0.7"/>
+</svg> 

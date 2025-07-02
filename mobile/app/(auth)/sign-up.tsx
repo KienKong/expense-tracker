@@ -42,6 +42,8 @@ export default function SignUpScreen() {
         setError('Invalid email address')
       }else if (err.errors?.[0].code === 'form_password_length_too_short') {
         setError('Password must be at least 8 characters long')
+      }else if (err.errors?.[0].code === 'form_password_pwned') {
+        setError('Password is too weak')
       }else if (err.errors?.[0].code === 'form_identifier_exists') {
         setError('Email is already in use')
       }else {
