@@ -1,9 +1,9 @@
 import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo'
-import { useRouter } from 'expo-router'
+import { useRouter, useFocusEffect } from 'expo-router'
 import { Alert, FlatList, Image, Text, TouchableOpacity, View, RefreshControl } from 'react-native'
 import { SignOutButton } from '@/components/SignOutButton'
 import { useTransactions } from '@/hooks/useTransactions'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { styles } from '@/assets/styles/home.styles'
 import { Ionicons } from '@expo/vector-icons'
 import { BalanceCard } from '@/components/BalanceCard'
@@ -22,6 +22,15 @@ export default function Page() {
     loadData()
     setIsInitialLoad(false)
   }, [loadData])
+
+  // Refresh data when screen comes into focus (e.g., after creating a transaction)
+  useFocusEffect(
+    useCallback(() => {
+      if (!isInitialLoad) {
+        loadData()
+      }
+    }, [loadData, isInitialLoad])
+  )
 
   const onRefresh = async () => {
     setRefreshing(true)
